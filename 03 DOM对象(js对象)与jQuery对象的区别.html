@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>03 DOM对象(js对象)与jQuery对象的区别</title>
+</head>
+<body>
+	<ul>
+		<li id="cloth">衣服</li>
+		<li>裤子</li>
+		<li>袜子</li>
+		<li>鞋子</li>
+	</ul>
+
+	<script src="js/jquery-1.12.4.js"></script>
+	<script>
+		$(function () {
+			//1.什么是DOM对象(js对象):使用js的方式获取到的元素就是js对象(DOMd对象)
+			// var cloth = document.getElementById("cloth");
+			// cloth.style.backgroundColor = "lightblue";
+
+			//2.什么是jQuery对象:使用jq的方式获取到的元素就是jq对象
+			// var $li = $("li");
+			// console.log($li);
+			// $li.text("调用jq的text方法该内容");
+
+			//3.jq对象与js对象的区别
+			//js对象不能调用jq对象的方法
+			// var cloth = document.getElementById("cloth");
+			// cloth.text("js对象调用不了jq的text方法");
+			
+			//4.jq对象与js对象的联系(jq对象其实就是js对象的一个集合,伪数组,里面存放了一大堆的js对象)(宏观上)
+			
+			//5.jq对象不能调用DOM对象的方法
+			//必须使用数组的方式才能调用到DOM对象的方法
+			
+			//6.DOM无法调用jQuery对象的方法.因为两个是不同的对象
+			//DOM对象调用jQuery对象的方法.需要把DOM对象转换成jQuery独享。
+			// var cloth = document.getElementById("cloth");
+			// //DOM对象就变成jQuery对象
+			// $(cloth).text("hello");
+
+			//7.jQuery对象怎么转换成DOM对象(取出来)
+			// var $li = $("li");
+			// $li[0].style.backgroundColor = "orange";
+			// $li[1].style.backgroundColor = "lightblue";
+
+			/**
+			 * 1.什么是DOM对象:用js的方式获取到的对象是DOM对象
+			 * 2.什么是jQuery对象:用jq的方式获取到的对象是jq对象
+			 * 3.区别于联系:
+			 * 	1)区别:js对象与jq对象的方法不能混用
+			 * 	2)联系:DOM--->jQuery ==> $()    jQuery--->DOM ==> $li[0].get(0)
+			 * 
+			 */
+		});
+	</script>
+</body>
+</html>

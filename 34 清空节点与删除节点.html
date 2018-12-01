@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>34 清空节点与删除节点</title>
+</head>
+<style type="text/css">
+  div {
+    width: 400px;
+    height: 400px;
+    background-color: pink;
+  }
+</style>
+<body>
+<div>
+  <p>1111</p>
+  <p>2222</p>
+</div>
+
+<p class='des'>我是外面的p元素</p>
+
+<script src="js/jquery-1.12.4.js"></script>
+<script type="text/javascript">
+  $(function(){
+    $(".des").click(function () {
+      alert("哈哈哈");
+    })
+
+    //可以清空一个元素的内容
+      //$("div").html("");//但是这种写法容易出现内存泄漏
+      //$("div").empty();//不会出现内存泄漏问题
+
+    //删除节点
+    //$("div").remove();
+
+    //克隆节点clone();参数为布尔类型
+    //false:不传参数也是深度复制,但是不会赋值事件
+    //true:也是深度复制,但是会复制事件
+    $(".des").clone(true).appendTo("div");
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>14 index方法详解</title>
+</head>
+<style type="text/css"></style>
+<body>
+<ul>
+  <li><a href="#">我是链接</a></li>
+  <li><a href="#">我是链接</a></li>
+  <li><a href="#">我是链接</a></li>
+  <li><a href="#">我是链接</a></li>
+  <li><a href="#">我是链接</a></li>
+  <li><a href="#">我是链接</a></li>
+  <li><a href="#">我是链接</a></li>
+  <li><a href="#">我是链接</a></li>
+  <li><a href="#">我是链接</a></li>
+</ul>
+
+<script src="js/jquery-1.12.4.js"></script>
+<script type="text/javascript">
+  $(function(){
+    //index()会返回当前元素在所有兄弟元素里面的索引
+    $("li").click(function () {
+      //$(this).index().log+tab
+      console.log($(this).index());
+    });
+  });
+</script>
+</body>
+</html>

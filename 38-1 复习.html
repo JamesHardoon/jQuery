@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>38-1 复习</title>
+</head>
+<style type="text/css"></style>
+<body>
+
+<script src="js/jquery-1.12.4.js"></script>
+<script type="text/javascript">
+  /*
+  * 1.jQuery特殊属性操作
+  *   1.1 val()方法
+  *     1.1.1 val() 不带参数,表示获取所匹配元素的value值
+  *     1.1.2 val("测试代码")  带参数,表示设置所匹配元素的value值
+  *   1.2 html()方法与text()方法
+  *     1.2.1 html()  获取整个HTML标签,如<p>你好</p>
+  *     1.2.2 text()  获取标签中的内容 ,比如获取<p>你好</p>中的你好
+  *   1.3 width()方法与height()方法
+  *     1.3.1 width(),不传参数指获取宽度,获取的是数值,不带单位
+  *     1.3.2 width(),带参数表示设置宽度
+  *     1。3.3 height()用法与width()一样
+  *   1.4 scrollTop()方法与scrollLeft()方法
+  *     1.4.1 srollTop()获取滚轮距离上面的坐标
+  *     1.4.2 srollLeft()获取滚轮距离左边的坐标
+  *   1.5 offset()方法与position()方法
+  *     1.5.1 offset()相对于document的位置
+  *     1.5.2 position()相对于有定位的父元素的位置
+  * 2.jQuery事件机制
+  *   2.1 jQuery事件发展历程(了解)
+  *     2.1.1 简单事件绑定--->
+  *       1) $("p").click(function () { })
+  *       2) 缺点: 一次只能注册一个事件,不能同时注册事件
+  *       3) 动态创建的元素/标签没有事件
+  *     2.1.2 bind事件绑定--->
+  *       1) $("p").bind("类型" , fn)
+  *       2) 类型可以是click mouseenter 等等,也可以同时传入多个 如$("p").bind("click mouseenter" , function () { });
+  *       3) 可以传入对象的形式:
+  *         $("p").bind({
+  *            click:function () { },
+  *            mouseenter: function () { }
+  *          })
+  *       4）动态创建的元素/标签没有事件
+  *       5) 比简单的事件绑定好一点的就是可以同时注册多个绑定事件
+  *     2.1.3 delegate事件绑定--->给父元素注册委托事件,最终还是由子元素(传入的第一个参数)来执行
+  *       1) delegate:委托，代理
+  *       2）$("div").delegate("p" , "click" , function () { });
+  *       3） 第一个参数：选择器selector,即事件最终由谁来执行   第二个参数:事件的类型   第三个参数:函数
+  *       3） 好处:动态创建的元素也有事件   不管动态创建了多少的元素/标签都只注册了一个事件
+  *       4） 事件委托delegate利用事件冒泡,其实就是给父元素注册了事件,让子元素冒泡到父元素上
+  *       5） 缺点:delegate只能注册委托事件,不能给自己注册事件
+  *     2.1.4 on事件绑定(推荐)
+  *       1) on事件绑定统一了所有的事件处理方式
+  *       2）有四个参数on(types,[selector],[data],fn),只有注册委托事件的时候,才传入selector
+  *       3) 第三个参数data，传递给处理函数的数据,事件触发的时候 通过event.data来使用(不常使用)
+  *       4) on注册事件的两种方式：
+  *         方式一
+  *         $("div").on("click" , function () { });//类似与bind()
+  *         方式二
+  *         $("div").on("click" , "p" , function () { });//有委托事件,类似于delegate()
+  *       4)
+  *     2.1.5 事件的执行顺序
+  *       1) 先执行自己的事件
+  *       2）再执行父元素的委托事件
+  *       3）接着执行父元素自己的事件
+  *   2.2 on注册事件(重点)
+  *     2.2.1 见上面
+  *   2.3 事件解绑
+  *     2.3.1 unbind方式(不用)
+  *       1) $(selector).unbind();//解除所有的事件绑定
+  *       2） $(selector).unbind("click");//解绑指定的事件绑定
+  *     2.3.2 undelegate方式(不用)
+  *       1) $(selector).undelegate();解绑所有的delegate事件
+  *       2) $(selector).undelegate("click");解绑所有的click事件
+  *     2.3.3 off方式(推荐)
+  *       1) $(selector).off();//解绑匹配元素的所有事件
+  *       2) $(selector).off("click");//解绑匹配元素的所有的click事件
+  *   2.4 触发事件
+  *     2.4.1 $(selector).click();//触发click事件
+  *     2.4.2 $(selector)。trigger("click");//trigger触发
+  *   2.5 jQuery事件对象
+  *     2.5.1 jQuery事件对象其实就是js事件对象的一个封装,处理了兼容性
+  *     2.5.2 属性方法
+  *       1）screenX和screenY 对应屏幕最左上角的值
+  *       2) clientX和clientY  距离页面左上角的位置(忽视滚动条)
+  *       3) pageX和pageY  距离页面最顶部的左上角的位置(会计算滚动条的距离)
+  *       4) event.keyCode  按下的键盘代码
+  *       5) event.data 储存绑定事件时传递的附加数据
+  *       6) event.stopPropagation()  阻止事件冒泡行为
+  *       7) event.preventDefault() 阻止浏览器默认行为
+  *       8) return false;  既能阻止事件冒泡,又能阻止浏览器默认行为
+  *       9) 案例：钢琴版导航(加强).html
+  * 3.jQuery补充知识点
+  *   3.1 链式编程
+  *     3.1.1 可以一直链式编程下去,设置性操作,可以链式编程
+  *     3.1.2 不可以链式编程下去，获取性操作,不能链式,因为可以返回,数字，字符串等
+  *     3.1.3 能不能一直链式编程下去的根本就是看返回值是不是一个jQuery对象,是就能,不是就不能
+  *     3.1.4 end();//筛选选择器会改变jQuery对象的DOM对象,想要回复到上一次的状态,并且返回匹配元素之前的状态
+  *   3.2 each()方法
+  *     3.2.1 jQuery的隐式迭代会对所有的DOM对象设置相同的值,但是如果我们需要给每一个对象设置不同的值的时候,就需要进行迭代了
+  *     3.2.2 作用:遍历jQuery对象集合,为每个匹配的元素执行一个函数
+  *     3.2.3 $(selector).each(function (index,element){ })
+  *       1) 参数一表示当前元素在所有匹配元素中的索引号
+  *       2）参数二表示当前元素(DOM对象)
+  *     3.2.4 案例不同的透明度.html
+  *   3.3 多库共存
+  *     3.3.1 解决链多库共存问题
+  *       1）将jQuery的外部引入文件放在别的js引入文件下面
+  *       2）调用var $$ = $.noConflict();并赋值给$$，之后写jQuery代码是用$$代替$即可
+  * 4.jQuery插件
+  *   4.1 常用插件
+  *     4.1.1 jQuery插件的作用
+  *       1）jQuery不可能包含所有的功能,我们可以通过插件扩展jQuery功能
+  *       2) jQuery有着丰富的插件,使用这些插件能给jQuery提供一些额外的功能
+  *     2.1.2 使用插件的步骤
+  *       1）引入jQuery文件
+  *       2）引入插件(如果有用到css的话,需要引入css)
+  *       3) 使用插件
+  *     4.1.2 jquery.color.js
+  *       animate不支持颜色的渐变,但是使用了jquery.color.js后,就可以支持颜色的渐变了
+  *     4.1.3 jquery.lazyload.js
+  *       懒加载插件
+  *     4.1.4 jquery.ui.js
+  *       1）jQueryUI专指由jQuery官方维护的UI方向的插件
+  *       2）官方API:http://api.jqueryui.com/category/all/
+  *       3）其他教程:jQueryUI教程   http://www.runoob.com/jqueryui/jqueryui-tutorial.html)
+  *       4)
+  *   4.2 制作jQuery插件
+  *       1）原理:jquery插件其实说白了就是给jQuery对象增加一个新的方法,让jQuery对象拥有某一个功能
+  *       2）通过$.fn方法就能够扩展jquery对象   $.fn.pluginName = function () { };
+  *       3) 制作手风琴插件
+  *
+  * */
+</script>
+</body>
+</html>

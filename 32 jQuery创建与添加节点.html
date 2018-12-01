@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>32 jQuery创建与添加节点</title>
+</head>
+<style type="text/css">
+  div {
+    width: 400px;
+    height: 400px;
+    background-color: pink;
+  }
+</style>
+<body>
+<div id="box">
+  我是内容
+</div>
+
+<p>我是外面的p元素</p>
+
+<script src="js/jquery-1.12.4.js"></script>
+<script type="text/javascript">
+  $(function(){
+    //创建jQuery对象
+    var $li = $('<a href="http://web.itcast.cn" target="_blank">传智大前端</a>');
+    console.log($li);
+
+    //将a标签添加到div中
+//    $("div").append('<a href="http://web.itcast.cn" target="_blank">传智大前端</a>')
+    //添加到子元素的最后面
+//    $("div").append($("p"));//在div标签中添加p标签
+//    $("p").appendTo($("div"));//将p标签添加到div标签中
+
+    //添加到子元素的最前面
+//    $("div").prepend($("p"));
+//    $("p").prependTo($("div"));
+
+    //添加到兄弟元素
+//    $("div").after($("p"));//将p标签添加到div标签之后
+//    $("div").before($("p"));//将p标签添加到div标签之前
+  });
+</script>
+</body>
+</html>

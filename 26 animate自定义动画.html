@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>26 animate自定义动画</title>
+</head>
+<style type="text/css">
+  div {
+    width: 100px;
+    height: 100px;
+    background-color: pink;
+    position: absolute;
+  }
+  #box2 {
+    background-color: blue;
+    margin-top: 150px;
+  }
+
+  #box3 {
+    background-color: yellowgreen;
+    margin-top: 300px;
+  }
+
+  #box4 {
+    background-color: lightblue;
+    margin-top: 450px;
+  }
+</style>
+<body>
+<input type="button" value="开始">
+<!--<input type="button" value="结束">-->
+<div id="box1"></div>
+<div id="box2"></div>
+<div id="box3"></div>
+<div id="box4"></div>
+
+<script src="js/jquery-1.12.4.js"></script>
+<script type="text/javascript">
+  $(function(){
+    $("input").eq(0).click(function () {
+      /*
+      * animate()自定义动画,可以传入四个动画
+      * 第一个参数: 传入一个对象,里面可以传需要动画的样式,必传参数
+      * 第二个参数: speed 动画的执行时间,默认是1000
+      * 第三个参数: 动画的执行效果
+      * 第四个参数: 回调函数
+      *
+      * */
+      //不传第三个参数,默认为swing
+      $("#box1").animate({left:800} , 8000);
+      //传入第三个参数swing 秋千  摇摆
+      $("#box2").animate({left:800} , 8000 , "swing");
+      //传入第三个参数linear 线性  匀速
+      $("#box3").animate({left:800} , 8000 , "linear");
+      //传入第四个参数
+      $("#box4").animate({left:800} , 8000 , "linear" , function () {
+        console.log("我是animate动画的第四个参数,回调函数");
+      });
+    });
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>40 width方法和height方法</title>
+</head>
+<style type="text/css">
+  div {
+    width: 200px;
+    height: 200px;
+    background-color: red;
+    padding: 10px;
+    border: 10px solid black;
+    margin:  10px;
+  }
+</style>
+<body>
+  <div></div>
+
+<script src="js/jquery-1.12.4.js"></script>
+<script type="text/javascript">
+  $(function() {
+    //使用css操作获取div的宽度
+    //console.log($("div").css("width"));//获取div的宽度,200px
+    //console.log($("div").css("width", "400px"));//设置div的宽度
+
+    //jQuery提供了width()方法直接获取宽度,获取的是数字
+    //console.log($("div").width());//width  200
+    //console.log($("div").innerWidth());//padding+width  220
+    //console.log($("div").outerWidth());//padding+width+border  240
+    //console.log($("div").outerWidth(true));//padding+width+border+margin  260
+    //console.log($("div").width(400));//设置div的宽度为400
+
+    //需要获取页面可视区的宽度和高度
+//    $(window).resize(function () {
+//      console.log($(window).width());
+//      console.log($(window).height());
+//    });
+  });
+</script>
+</body>
+</html>

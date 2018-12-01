@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>01 jQuery初体验</title>
+	<style>
+		div {
+			/*高度一定要给*/
+			height: 200px;
+			margin-bottom: 10px;
+			background-color: #a43035;
+			display: none;
+		}
+	</style>
+
+	<!-- 1.需要引入jQuery文件 -->
+	<script src="js/jquery-1.12.4.js"></script>
+	<script>
+		// 2.入口函数的标准
+		$(document).ready(function() {
+			//注册事件,把on去掉,是一个方法
+			$("#btn1").click(function () {
+				//隐式迭代:就是偷偷的遍历,jQuery会自动的遍历,不需要我们的遍历
+				//动画函数
+				$("div").show(1000);
+			});
+
+			$("#btn2").click(function () {
+				//注册点击事件
+				$("div").text("我是内容");
+			});
+		});
+	</script>
+
+</head>
+<body>
+	<input type="button" value="展示" id="btn1">
+	<input type="button" value="设置内容" id="btn2">
+
+	<div></div>
+	<div></div>
+	<div></div>
+
+	<!-- <script>
+	//原生JS写法
+		/**
+		 * 相对于jquery,javaScript不好的地方
+		 * 1.代码比较麻烦,需要遍历,可能还需要嵌套
+		 * 2.找对象麻烦,方法少,还长
+		 * 3.会有兼容问题
+		 * 4.如果想要实现简单的动画效果,需要自己写,如之前的animate函数
+		 * 5.js注册事件,会被覆盖,需要使用addEventListener
+		 * 
+		 */
+		var btn1 = document.getElementById("btn1");
+		var btn2 = document.getElementById("btn2");
+		var divs = document.getElementsByTagName("div");
+	
+		//为按钮注册点击事件
+		btn1.onclick = function () {
+			//循环遍历
+			for (var i = 0; i < divs.length; i++) {
+				//显示出文本框
+				divs[i].style.display = "block";
+			}
+		};
+	
+		btn2.onclick = function () {
+			//循环遍历
+			for (var i = 0; i < divs.length; i++) {
+				//显示出内容,低版本的火狐浏览器不支持innerText,支持textContent
+				divs[i].innerHTML = "我是内容";
+			}
+		};
+	</script> -->
+</body>
+</html>

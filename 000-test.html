@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style type="text/css"></style>
+<body>
+
+<!--<script src="js/jquery-1.12.4.js"></script>-->
+<script type="text/javascript">
+
+    function* myGenerator() {
+        console.log('开始执行');
+        let  result = yield  'hello';
+        console.log(result);//在调用MG.next()中不传值的话，这里打印的就是undefined
+        console.log('暂停后，再次执行');
+        yield 'generator';
+        console.log('遍历完毕');
+        return  '返回的结果';
+    }
+    myGenerator();
+    let MG = myGenerator(); // 返回指针对象
+    console.log(MG);
+    console.log(MG.next());//遇到yield停止，遇到MG.next()再次启动
+    console.log(MG.next('这里面传入一个标识取代undefined'));
+    console.log(MG.next());
+
+    // 普通的对象上面没有Iterator接口，不能使用for of 循环遍历，但是可以通过Generator函数手动部署一个Iterator接口
+    let obj = {username: 'kobe' , age: 39};
+    obj[Symbol.iterator] = function* myTest() {
+        yield 1;
+        yield 2;
+        yield 3;
+        yield 4;
+    };
+    for (let i of obj) {
+        console.log(i);
+    }
+
+
+</script>
+</body>
+</html>

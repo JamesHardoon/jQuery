@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>31 动态创建节点</title>
+</head>
+<style type="text/css">
+  div {
+    width: 400px;
+    height: 400px;
+    background-color: pink;
+  }
+</style>
+<body>
+<!--<a href="http://web.itcast.cn" target="_blank">传智大前端</a>-->
+<div id="box"></div>
+
+<script src="js/jquery-1.12.4.js"></script>
+<script type="text/javascript">
+  $(function(){
+    //js的写法
+    /*var box = document.getElementById("box");
+
+    var a = document.createElement("a");
+    box.appendChild(a);
+    a.setAttribute("href" , "http://web.itcast.cn");
+    a.setAttribute("target" , "_blank");
+    a.innerHTML = "传智大前端";*/
+
+    //jQuery写法
+    $("#box").append('<a href="http://web.itcast.cn" target="_blank">传智大前端</a>');
+  });
+</script>
+</body>
+</html>

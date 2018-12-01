@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>02 jQuery的入口函数</title>
+</head>
+<body>
+	
+	<script src="js/jquery-1.12.4.js"></script>
+	<script>
+		//js的入口函数执行要比jQuery的入口函数执行得晚一些。
+		//jQuery的入口函数会等待页面加载完成才执行,但是不会等待图片的加载
+		//JS的入口函数会等待页面的加载完成,并且等待图片加载完成才开始执行
+		
+		//这是js的入口函数
+		window.onload = function () {
+			console.log("我是js的入口函数");
+		};//3
+
+		//jQuery入口函数的第一种写法,认识就行
+		$(document).ready(function () {
+			console.log("jQuery入口函数的第一种写法");
+		});//1
+		//jQuery入口函数的第二种写法,常用
+		$(function () {
+			console.log("jQuery入口函数的第二种写法");
+		});//2
+
+		//jQuery入口函数要比js的入口函数先加载
+	</script>
+</body>
+</html>

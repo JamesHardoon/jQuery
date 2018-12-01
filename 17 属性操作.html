@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>17 属性操作</title>
+</head>
+<style type="text/css"></style>
+<body>
+  <!--样式:是写在style里面的,用css来操作-->
+  <!--属性:用attr方法操作-->
+  <img src="images/04.gif" alt="attr属性操作" title="对对对">
+
+<script src="js/jquery-1.12.4.js"></script>
+<script type="text/javascript">
+  /*
+  * jQuery属性操作:1.attr属性操作   2.prop属性操作
+  * */
+  $(function(){
+    /*
+    * attr属性操作: (用户跟css用法一样)
+    * 1.设置单个属性  attr(name , value);
+    * 2.设置多个属性  attr(obj)
+    *
+    * */
+    //1.设置单个属性
+    $("img").attr("alt" , "我改了alt的值");
+    $("img").attr("title" , "错错错");
+
+    //2.设置多个属性
+    /*$("img").attr({
+      alt: "多属性设置alt值",
+      title: "错错错",
+      aa: "bb"//还能自定义属性
+    });*/
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>39 htmlff与text方法</title>
+</head>
+<style type="text/css"></style>
+<body>
+<div>
+  <h3>我是标题</h3>
+</div>
+<script src="js/jquery-1.12.4.js"></script>
+<script type="text/javascript">
+  $(function(){
+
+    //html:相当于js中的innerHTML,不过没有兼容性问题
+    //text:相当于js中的innerText,也没有兼容性问题
+    console.log($("div").html());//<h3>我是标题</h3>
+    console.log($("div").text());//我是标题
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>04 隔行变色</title>
+</head>
+<body>
+	<ul>
+		<!-- li{我是第$个li}*10 -->
+		<li>我是第1个li</li>
+		<li>我是第2个li</li>
+		<li>我是第3个li</li>
+		<li>我是第4个li</li>
+		<li>我是第5个li</li>
+		<li>我是第6个li</li>
+		<li>我是第7个li</li>
+		<li>我是第8个li</li>
+		<li>我是第9个li</li>
+		<li>我是第10个li</li>
+	</ul>
+	
+	<script src="js/jquery-1.12.4.js"></script>
+	<!-- <script>
+		$(function () {
+			var lis = $("li");//这样写没有错
+			for (var i = 0; i < lis.length; i++) {
+				if (i % 2 == 0) {
+					//lis:是jq对象
+					//lis[i]:是DOM对象,因为通过下标取出来了
+					lis[i].style.backgroundColor = "lightblue";
+				} else {
+					lis[i].style.backgroundColor = "lightgreen";
+				}
+			}
+		});
+	</script>  -->
+	
+	<script>
+		$(function () {
+			$("li:odd").css("color","red");
+			$("li:even").css("color","blue")
+		});
+	</script>
+
+</body>
+</html>

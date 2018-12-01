@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>15 CSS操作</title>
+</head>
+<style type="text/css"></style>
+<body>
+<ul>
+  <li>1</li>
+  <li>2</li>
+  <li>3</li>
+  <li>4</li>
+</ul>
+
+  <script src="js/jquery-1.12.4.js"></script>
+  <script type="text/javascript">
+    /*
+    * jQuery操作样式分为:1.css操作  2.class操作
+    * */
+    $(function(){
+      /*
+      * css操作主要有三个作用:
+      * 1.修改单个样式:
+      *   css(name , value);
+      *   name:样式名  value:样式值
+      * 2.修改多个样式
+      *   css(obj)---传入一个对象
+      *   css({
+      *     color: "red",
+      *     fontSize: "32px"
+      *   });
+      * 3.获取样式
+      *    css(name);
+      *    name:想要获取的样式
+      * */
+
+      //1.修改单个样式css(name,value),通常需要写多个样式的话,用对象的方式
+      /*$("li").css("backgroundColor" , "red")
+             .css("fontSize" , "32px");*/
+
+      //2.修改多个样式 css(obj)
+      /*$("li").css({
+        backgroundColor: "lightblue",
+        color: "orange",
+        fontSize: "32px"
+      });*/
+
+      //3.获取样式css(name) name就是想获取的样式
+      //eq()获取指定的元素
+      //$("li").eq(0).css("fontSize" , "32px");
+
+      //隐式迭代:
+        //设置操作的时候:会给jq内部的所有对象都设置相同的值
+        //获取的时候；只会返回第一个元素对应的值
+      $("li").eq(0).css("fontSize", "20px");
+      $("li").eq(1).css("fontSize", "21px");
+      $("li").eq(2).css("fontSize", "22px");
+      $("li").eq(3).css("fontSize", "23px");
+
+      //隐式迭代:最后只会打印20px
+      console.log($("li").css("fontSize"));//20px
+    });
+  </script>
+</body>
+</html>

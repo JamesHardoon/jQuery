@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>38 val方法</title>
+</head>
+<style type="text/css"></style>
+<body>
+<input type="text" value="洋酒" id="txt">
+<input type="button" value="搜索" id="btn">
+
+<script src="js/jquery-1.12.4.js"></script>
+<script type="text/javascript">
+  $(function(){
+    //console.log($("#btn").val());//不传参数,获取#btn的value值
+    //console.log($("#btn").val("检索"));//传参数,修改#btn的value的值
+
+    $("#txt").focus(function () {
+      //如果是默认值,则清空内容
+      if ($(this).val() == "洋酒") {
+        $(this).val("");
+      }
+    });
+
+    $("#txt").blur(function () {
+      if ($(this).val() === "") {
+        $(this).val("洋酒");
+      }
+    });
+  });
+</script>
+</body>
+</html>
